@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista de Tarefas - MVP</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main class="app" aria-labelledby="titulo-app">
+    <h1 id="titulo-app">Lista de Tarefas</h1>
+
+    <form id="form-tarefa" autocomplete="off" novalidate>
+      <label for="entrada-tarefa" class="visually-hidden">Nova tarefa</label>
+      <div class="input-row">
+        <input id="entrada-tarefa" name="tarefa" type="text" placeholder="Digite uma tarefa" maxlength="80" aria-describedby="mensagem" />
+        <button id="btn-adicionar" type="submit" aria-label="Adicionar tarefa">Adicionar</button>
+      </div>
+      <div id="mensagem" class="mensagem" role="status" aria-live="polite"></div>
+    </form>
+
+    <section class="painel-lista">
+      <header class="painel-cabecalho">
+        <h2>Tarefas (<span id="contador">0</span>/10)</h2>
+        <div class="acoes-cabecalho">
+          <button id="btn-undo" type="button" class="secundario" aria-label="Desfazer última alteração" disabled>Desfazer última alteração</button>
+          <button id="btn-limpar" type="button" class="secundario" aria-label="Remover todas as tarefas">Limpar Tudo</button>
+        </div>
+      </header>
+      <ul id="lista-tarefas" class="lista" aria-label="Lista de tarefas"></ul>
+    </section>
+  </main>
+
+  <template id="template-item">
+    <li class="item-tarefa" data-id="">
+      <span class="texto"></span>
+      <div class="acoes-item">
+        <button class="editar" type="button" aria-label="Editar tarefa">✎</button>
+        <button class="remover" type="button" aria-label="Remover tarefa">✕</button>
+      </div>
+    </li>
+  </template>
+
+  <!-- Popup de limite -->
+  <div id="popup-limite" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="popup-titulo">
+    <div class="modal">
+      <h2 id="popup-titulo">Limite atingido</h2>
+      <p>Você alcançou o máximo de 10 tarefas. Remova alguma para adicionar novas.</p>
+      <button id="popup-fechar" type="button" class="primario">Fechar</button>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
